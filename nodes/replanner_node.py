@@ -2,7 +2,7 @@ from langchain.chains.openai_functions import create_openai_fn_runnable
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field 
 from langchain_experimental.llms.ollama_functions import OllamaFunctions 
-from .replanner import Plan
+from .planner_node import Plan
 
 class Response(BaseModel):
     """Response to user"""

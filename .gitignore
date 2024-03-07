@@ -3,3 +3,6 @@
 Supervisor.ipynb
 plan-and-execute.ipynb
 langgraph.ipynb
+__pycache__
+LLMCompiler/__pycache__
+nodes/__pycache__
