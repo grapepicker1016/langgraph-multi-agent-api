@@ -13,6 +13,8 @@ langgraph = "^0.0.26"
 langchainhub = "^0.1.14"
 langchain-experimental = "^0.0.53"
 python-dotenv = "^1.0.1"
+numexpr = "^2.9.0"
+grandalf = "^0.8"
 
 
 [build-system]

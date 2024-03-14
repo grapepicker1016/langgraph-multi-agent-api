@@ -4,6 +4,8 @@ from typing import List, Optional
 
 import numexpr
 from langchain.chains.openai_functions import create_structured_output_runnable
+
+from helpers.structured_output_runnable_ollama_functions import create_structured_output_runnable_custom
 from langchain_community.chat_models import ChatOpenAI
 from langchain_community.chat_models import ChatOllama
 
@@ -116,7 +118,12 @@ def get_math_tool(llm):
             MessagesPlaceholder(variable_name="context", optional=True),
         ]
     )
-    extractor = create_structured_output_runnable(ExecuteCode, llm, prompt, mode='openai-functions')
+    # extractor = create_structured_output_runnable(ExecuteCode, llm, prompt, mode='openai-functions')
+    extractor = create_structured_output_runnable_custom(
+        ExecuteCode,
+        llm,
+        prompt
+    )
     
     print(extractor)
 
@@ -134,8 +141,9 @@ def get_math_tool(llm):
                 )
                 chain_input["context"] = [SystemMessage(content=context_str)]
         
-        print(chain_input)
+   
         code_model = extractor.invoke(chain_input, config)
+        print(code_model)
         try:
             return _evaluate_expression(code_model.code)
         except Exception as e:
